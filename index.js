@@ -176,10 +176,29 @@ function addHtml(member) {
 }
 
 
+function finishHtml() {
+    const html = `</div>
+    </div>
+
+    </body>
+    </html>`;
+
+    fs.appendFile("./src/team.html", html, function(err) {
+        if (err) {
+            console.log(err);
+        };
+    });
+    console.log("end");
+    
+}
 
 
-
-
+addMember();
+startHtml();
+addHtml("hello")
+.then(function() {
+    finishHtml();
+});
 
 
 
