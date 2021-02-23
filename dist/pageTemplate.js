@@ -1,8 +1,9 @@
+
 function addHtml(member) {
     return new Promise(function(resolve, reject) {
         const name = member.getName();
         const role = member.getRole();
-        const id = memeber.getId();
+        const id = member.getId();
         const email = member.getEmail();
         let data = "";
         if (role === "Engineer") {
@@ -52,42 +53,13 @@ function addHtml(member) {
           </div>`
         }
         console.log("added team member");
-        fs.appendFile("./src/team.html", data, function(err) {
-            if (err) {
-                return reject(err);
-            };
-            return resolve();
-        });
+      resolve(data)
     });
 
 
 
     
 }
-
-function startHtml() {
-  const html = `
-  <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-          <title>Team Generator</title>
-      </head>
-      <body>
-  
-      <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">My Team</span>
-      </div>
-    </nav>
-  <div class="container">
-  <div class="row">`;
-  
-  console.log("start");
-  }
   
 
   function finishHtml() {
@@ -101,9 +73,10 @@ function startHtml() {
        if (err) {
            console.log(err);
        };
+       console.log("end");
      });
-     console.log("end");
+     
     
 }
 
-module.exports = pageTemplate;
+module.exports = addHtml;
