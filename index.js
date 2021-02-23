@@ -4,12 +4,14 @@ const Engineer = require('./lib/Engineer');
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 
+
+
 const teamMembers = [];
 
 
 // array used to setup prompts for terminal
 const addMember = () => {
-    return inquirer.prompt([
+     inquirer.prompt([
         {
         type: 'input',
         name: "name",
@@ -43,7 +45,7 @@ const addMember = () => {
             roleInfo = "office phone number";
         }
         inquirer.prompt([{
-            message: "Enter team member's ${roleInfo}",
+            message: `Enter team member's ${roleInfo}`,
             name: "roleInfo"
         },
         {
@@ -65,15 +67,15 @@ const addMember = () => {
                 newMember = new Manager(name, id, email, roleInfo);
             }
 
-            teamMembers.push(newMember);
-            addHTML(newMember)
-            .then(function() {
-                if (moreMembers === 'yes') {
-                    addMember();
-                }else {
-                    finshHtml();
-                }
-            });
+            //  teamMembers.push(newMember);
+            // addHTML(newMember)
+            // .then(function() {
+            //     if (moreMembers === 'yes') {
+            //         addMember();
+            //     }else {
+            //         finshHtml();
+            //     }
+            // });
         });
     });
 }
@@ -107,80 +109,11 @@ const html = `
   </nav>
 <div class="container">
 <div class="row">`;
-fs.writeToFile("./src/team.html", html, function(err) {
-    if (err) {
-        console.log(err);
-    }
-});
-console.log("start");
+
+
 }
 
-function addHtml(member) {
-    return new Promise(function(resolve, reject) {
-        const name = member.getName();
-        const role = member.getRole();
-        const id = memeber.getId();
-        const email = member.getEmail();
-        let data = "";
-        if (role === "Engineer") {
-            const github = member.getGitHub();
-            data = `<div class="col-6">
-            <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><strong>${name}</strong></h5>
-    <h5 class="card-subtitle mb-2 text-muted">Engineer</h5>
-    <ul class="list-group list-group-flush">
-    <li class="list-group-item">ID: ${id}</li>
-    <li class="list-group-item">Email: ${email}</li>
-    <li class="list-group-item">GitHub: ${github}</li>
-  
-    </ul>
-  </div>
-</div>`;
-        } else if (role === "Intern") {
-            const school = member.getSchool();
-            data = `<div class="col-sm-6">
-            <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title"><strong>${name}</strong></h5>
-                <h5 class="card-subtitle mb-2 text-muted">Intern</h5>
-                <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email: ${email}</li>
-                <li class="list-group-item">School: ${school}</li>
-            
-                </ul>
-         </div>
-    </div>`;
-        } else {
-            const officeNumber = member.getOfficeNumber();
-            data = `<div class="col-sm-6">
-            <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title"><strong>${name}</strong></h5>
-              <h5 class="card-subtitle mb-2 text-muted">Manager</h5>
-              <ul class="list-group list-group-flush">
-              <li class="list-group-item">ID: ${id}</li>
-              <li class="list-group-item">Email: ${email}</li>
-              <li class="list-group-item">Office number: ${officeNumber}</li>
-            
-              </ul>
-            </div>
-          </div>`
-        }
-        console.log("added team member");
-        fs.appendFile("./src/team.html", data, function(err) {
-            if (err) {
-                return reject(err);
-            };
-            return resolve();
-        });
-    });
 
-
-
-    
-}
 
 
 function finishHtml() {
@@ -190,28 +123,32 @@ function finishHtml() {
     </body>
     </html>`;
 
-    fs.appendFile("./src/team.html", html, function(err) {
-        if (err) {
-            console.log(err);
-        };
-    });
-    console.log("end");
+     fs.appendFile("./src/team.html", html, function(err) {
+       if (err) {
+           console.log(err);
+       };
+     });
+     console.log("end");
     
 }
 
+ 
+
 
 // intializes app markup
- function initApp() {
+  function initApp() {   
     startHtml();
     addMember();
 }
 
-addMember();
-startHtml();
-addHtml("hello")
-.then(function() {
-    finishHtml();
-});
+
+
+// addMember();
+// startHtml();
+ //addHtml("hello")
+// .then(function() {
+//     finishHtml();
+// });
 
 
 initApp();
