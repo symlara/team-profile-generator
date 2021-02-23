@@ -122,6 +122,12 @@ ${members}
 </body>
 </html>
 `;
+fs.writeFile("./src.team.html", html, function(err) {
+    if (err) {
+        console.log(err);
+    }
+});
+
 return html
 
 }
@@ -136,11 +142,12 @@ function finishHtml(html) {
     // </body>
     // </html>`;
 
-     fs.appendFile("./src/team.html", html, function(err) {
-       if (err) {
-           console.log(err);
-       };
-     });
+    
+    fs.appendFile("./src/team.html", html, function(err) {
+        if (err) {
+            console.log(err);
+        };
+      });
      console.log("end");
     
 }

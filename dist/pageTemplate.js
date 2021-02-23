@@ -1,4 +1,5 @@
 
+
 function addHtml(member) {
     return new Promise(function(resolve, reject) {
         const name = member.getName();
@@ -8,7 +9,8 @@ function addHtml(member) {
         let data = "";
         if (role === "Engineer") {
             const github = member.getGitHub();
-            data = `<div class="col-6">
+            data = `<div class="row">
+            <div class="col-sm-4">
             <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><strong>${name}</strong></h5>
@@ -19,11 +21,13 @@ function addHtml(member) {
     <li class="list-group-item">GitHub: ${github}</li>
   
     </ul>
+    </div>
+    </div>
   </div>
 </div>`;
         } else if (role === "Intern") {
             const school = member.getSchool();
-            data = `<div class="col-sm-6">
+            data = `<div class="col-sm-4">
             <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><strong>${name}</strong></h5>
@@ -34,11 +38,13 @@ function addHtml(member) {
                 <li class="list-group-item">School: ${school}</li>
             
                 </ul>
+                </div>
          </div>
     </div>`;
         } else {
             const officeNumber = member.getOfficeNumber();
-            data = `<div class="col-sm-6">
+            data = `
+            <div class="col-sm-4">
             <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title"><strong>${name}</strong></h5>
@@ -49,7 +55,8 @@ function addHtml(member) {
               <li class="list-group-item">Office number: ${officeNumber}</li>
             
               </ul>
-            </div>
+              </div>
+              </div>
           </div>`
         }
         console.log("added team member");
