@@ -99,17 +99,6 @@ const addMember = () => {
 
 function startHtml(members) {
 const html = `
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <title>Team Generator</title>
-    </head>
-    <body>
-
     <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">My Team</span>
@@ -119,8 +108,7 @@ const html = `
 <div class="row">
 ${members}
 </div>
-</body>
-</html>
+
 `;
 fs.writeFile("./src.team.html", html, function(err) {
     if (err) {
