@@ -6,20 +6,18 @@ const Intern = require("./lib/Intern");
 
 const teamMembers = [];
 
-// intializes app markup
-function initApp() {
-    startHtml();
-    addMember();
-}
-// function used to setup prompts for terminal
-function addMember() {
-    inquirer.prompt([{
-        message: "Enter the team member's name",
-        name: name
+
+// array used to setup prompts for terminal
+const addMember = () => {
+    return inquirer.prompt([
+        {
+        type: 'input',
+        name: "name",
+        message: "Enter the team member's name:",
     },
     {
         type: 'list',
-        message: "Pick the team member's role",
+        message: "Pick the team member's role:",
         choices: [
             "Engineer",
             "Intern",
@@ -28,11 +26,11 @@ function addMember() {
         name: "role"
     },
     {
-    message: "Enter the team member's id",
-    name: id
+    message: "Enter the team member's id:",
+    name: "id"
     },
     {
-        message: "Enter the team member's email",
+        message: "Enter the team member's email:",
         name: "email"
     }])
     .then(function({name, role, id, email}) {
@@ -67,7 +65,7 @@ function addMember() {
                 newMember = new Manager(name, id, email, roleInfo);
             }
 
-            employees.push(newMember);
+            teamMembers.push(newMember);
             addHTML(newMember)
             .then(function() {
                 if (moreMembers === 'yes') {
@@ -79,6 +77,15 @@ function addMember() {
         });
     });
 }
+
+function renderHtml(memberArray) {
+    startHtml();
+    for (const member of memberArray) {
+        addHtml(member);
+    }
+    finishHtml();
+}
+
 
 function startHtml() {
 const html = `
@@ -100,7 +107,7 @@ const html = `
   </nav>
 <div class="container">
 <div class="row">`;
-fs.writeFile("./src/team.html", html, function(err) {
+fs.writeToFile("./src/team.html", html, function(err) {
     if (err) {
         console.log(err);
     }
@@ -193,13 +200,18 @@ function finishHtml() {
 }
 
 
+// intializes app markup
+ function initApp() {
+    startHtml();
+    addMember();
+}
+
 addMember();
 startHtml();
 addHtml("hello")
 .then(function() {
     finishHtml();
 });
-
 
 
 initApp();
