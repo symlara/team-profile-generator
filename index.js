@@ -81,6 +81,8 @@ let html = startHtml(members);
 });
 }
 
+
+//function creates markup for beginning of html file
 function startHtml(members) {
 const html = `
 <!DOCTYPE html>
