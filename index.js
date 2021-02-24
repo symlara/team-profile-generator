@@ -95,10 +95,11 @@ const html = `
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../dist/style.css">
         <title>Team Generator</title>
     </head>
     <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar bg-dark text-white" style="text-align: center";>
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1">My Team</span>
     </div>
