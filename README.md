@@ -4,7 +4,7 @@
 This app can be used to generate a profile page of your team members! Using the tools mentioned below you can run this application in your Terminal and generate a separate HTML file that showcases your development skill and also your team member's!
 
 This video clip shows the functionality of this application: 
-<a href="https://user-images.githubusercontent.com/40181569/108947573-56153f80-7626-11eb-83f4-a57980b76f2f.mp4"target="_blank">TeamGenerator</a>
+https://user-images.githubusercontent.com/40181569/108947573-56153f80-7626-11eb-83f4-a57980b76f2f.mp4
 
 
 
