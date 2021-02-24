@@ -1,4 +1,12 @@
-body {
-    text-align: center;
+.card-title {
+    background-color: #000;
+    color: #ffffff;
 }
 
+.card-body {
+    background-color: #000;
+}
+
+ .list-group-item {
+    background-color: #adb5bd ;
+}
