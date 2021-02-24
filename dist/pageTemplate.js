@@ -1,5 +1,5 @@
 
-
+// function runs the html markup added for each employee
 function addHtml(member) {
   return new Promise(function(resolve, reject) {
       const name = member.getName();
@@ -67,7 +67,7 @@ function addHtml(member) {
   
 }
 
-
+// ends html call and file
 function finishHtml() {
   const html = `</div>
   </div>
